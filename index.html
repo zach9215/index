@@ -1,67 +1,67 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+
+ 
+<头>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>私募基金合规知识测试 - 题库版</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
+    <样式>
+        *  {
+            盒模型：边框盒;
+            边距：0;
+            
+            字体家族：'PingFang SC'，'Microsoft YaHei'，无衬线字体;
+        输入：输入：}
         
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            min-height: 100vh;
-        }
+        身体
+            背景：线性渐变（135度，#f5f7fa 0%，#e4e7f1 100%）;
+            颜色: #333;
+            行高: 1.6;
+            
+            最大宽度：900像素;
+            边距：0 自动;
+            最小高度：100vh;
+        输入：}
         
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding: 25px 0;
-            border-bottom: 1px solid #e1e4e8;
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-            border-radius: 15px;
-            color: white;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
+        标题 {
+            文本对齐：居中;
+            下外边距：25像素;
+             
+            下边框：1像素 实线#e1e4e8;
+            背景：线性渐变（135度，#1a365d 0%，#2c5282 100%）;
+            边框半径：15像素;
+            颜色：白色;
+            box-shadow：0 6px 12px rgba(0，0，0，0.15);
+            位置：相对;
+            溢出：隐藏;
+        输入：}
         
-        header:before {
-            content: "";
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
+        标题:之前
+            内容：“ lẽ”
+            位置：绝对;
+            顶部：-50像素;
+            右：-50像素;
+            宽度：150像素;
+            高度：150像素;
+            背景： rgba（255，255，255，0.1）;
+            边框半径：50%；
+        输入：}
         
-        header:after {
-            content: "";
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-        }
+        标题:之后 {
+            内容："";
+            位置：绝对;
+            底部：-30像素;
+            左：-30像素;
+            宽度：100像素;
+            高度：100像素;
+            背景： rgba（255，255，255，0.1）;
+            边框半径：50%;
+        输入：}
         
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
+         
+            字体大小：2.2rem;
+            下边距：10像素;
+            位置：相对;
+            z轴索引：2;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
@@ -594,9 +594,9 @@
         <p class="welcome-text">
             本测试基于《私募投资基金监督管理暂行办法》等法规设计，涵盖募集行为、投资者适当性、信息披露等核心合规要点。
             每次测试将从题库中随机抽取5道题目，帮助您巩固私募基金合规知识体系。
-        </p>
+        </段>
         
-        <div class="features">
+        <div class="特点">
             <div class="feature-card fade-in" style="animation-delay: 0.1s">
                 <div class="feature-icon">📚</div>
                 <div class="feature-title">专业题库</div>
@@ -619,23 +619,23 @@
     
     <div class="container" id="question-container">
         <div class="question">
-            <div class="question-number">1</div>
-            <div id="question-text"></div>
+            <div class="问题编号">1</div>
+            <div id="问题文本"></div>
         </div>
         
-        <div class="options" id="options-list"></div>
+        <div class="选项" id="选项列表"></div>
         
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
+        <div 类="进度容器">
+            <div 类+"进度条">
+                <div class="进度条填充" id="进度条填充"></div>
             </div>
             <div class="progress-text" id="progress-text"></div>
         </div>
         
-        <div class="btn-container">
-            <button id="prev-btn" class="btn secondary">上一题</button>
-            <button id="next-btn" class="btn">下一题</button>
-            <button id="submit-btn" class="btn" style="display:none;">提交答卷</button>
+        <div 类="btn-container">
+            <按钮 id="上一题按钮" 类="按钮 次要">上一题</按钮>
+            <按钮 id="下题按钮" 类="按钮">下一题</按钮>
+            <按钮 id="提交按钮" 类="按钮" 样式="显示:无;">提交答案按钮</>
         </div>
     </div>
     
@@ -644,40 +644,40 @@
         <div id="result-score"></div>
         <div class="result-feedback" id="result-feedback"></div>
         
-        <h3 class="review-section-title">题目解析</h3>
-        <div id="review-section"></div>
+        <h3 类="审阅部分标题">题目解析</h3>
+        <div id="评论部分"></div>
         
-        <button id="restart-btn" class="btn" style="margin-top: 30px;">重新测试</button>
+        <按钮 id="重启按钮" 类="按钮" 样式="上边距: 30像素;">重新测试</按钮>
     </div>
     
-    <footer>
-        <p>© 2023 私募基金合规指南 | 普及行业知识，助力合规发展</p>
+    <页脚>
+        <p>© 2025 私募基金合规指南 | 普及行业知识，助力合规发展</p>
         <p>题目内容基于最新法律法规及行业实践，定期更新</p>
-    </footer>
+    </页脚>
     
-    <script>
+    <脚本>
         // 私募基金测试题库（20道题）
-        const questionBank = [
+        常量 问题库 = [
             // 募集合规类
-            {
-                id: 1,
-                question: "私募基金可以向以下哪类对象募集资金？",
-                options: [
-                    "A. 社会公众",
-                    "B. 合格投资者",
-                    "C. 任何个人或机构",
-                    "D. 特定行业从业人员"
-                ],
-                correctIndex: 1,
-                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者是指具备相应风险识别能力和风险承担能力，投资于单只私募基金的金额不低于100万元且符合下列相关标准的单位和个人：（一）净资产不低于1000万元的单位；（二）金融资产不低于300万元或者最近三年年均收入不低于50万元的个人。私募基金只能向合格投资者募集。",
-                category: "募集合规"
+            输入：
+                编号：1，
+                问题：“私募基金可以向以下哪类对象募集资金？”
+                选项：[
+                    "A. 社会公众"
+                    "B. 合格投资者"
+                    "C. 任何个人或机构"，
+                    &D. 特定行业从业人员
+                ]，
+                正确索引：1,
+                解释："【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者是指具备相应风险识别能力和风险承担能力，投资于单只私募基金的金额不低于100万元且符合下列相关标准的单位和个人：（一）净资产不低于1000万元的单位；（二）金融资产不低于300万元或者最近三年年均收入不低于50万元的个人。私募基金只能向合格投资者募集。"
+                类别：“募集合规”
             },
-            {
+            输入：
                 id: 2,
-                question: "私募基金募集过程中，以下哪种行为是被允许的？",
-                options: [
-                    "A. 通过报纸、广告等公开方式宣传",
-                    "B. 向不特定对象发送产品介绍",
+                问题: "私募基金募集过程中，以下哪种行为是被允许的？"
+                选项：[
+                    "A. 通过报纸、广告等公开方式宣传"
+                    "B. 向不特定对象发送产品介绍"
                     "C. 通过官方网站公开宣传基金管理人品牌",
                     "D. 承诺保本保收益"
                 ],
