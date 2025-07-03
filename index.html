@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私募基金合规知识自测</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        h1 {
+            color: #1a365d;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .disclaimer {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffd54f;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+        
+        .disclaimer h3 {
+            margin-bottom: 8px;
+            color: #d32f2f;
+        }
+        
+        .disclaimer ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        #question-container {
+            display: block;
+        }
+        
+        #result-container {
+            display: none;
+        }
+        
+        .question {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        
+        .options {
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            display: block;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+        }
+        
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #90caf9;
+            font-weight: 500;
+        }
+        
+        .progress {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #1a365d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #152a4d;
+        }
+        
+        .btn:disabled {
+            background: #b0bec5;
+            cursor: not-allowed;
+        }
+        
+        .btn.secondary {
+            background: #f1f5f9;
+            color: #1a365d;
+            border: 1px solid #cbd5e1;
+            margin-top: 15px;
+        }
+        
+        .btn.secondary:hover {
+            background: #e2e8f0;
+        }
+        
+        #result-score {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin: 20px 0;
+        }
+        
+        .result-feedback {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #4a5568;
+        }
+        
+        .review-item {
+            padding: 18px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .review-question {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .review-answer {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        
+        .correct {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .incorrect {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+        
+        .review-explanation {
+            background: #ebf8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #2d3748;
+        }
+        
+        .review-explanation h4 {
+            color: #2b6cb0;
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            color: #718096;
+            font-size: 0.85rem;
+            margin-top: 30px;
+            padding: 15px;
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>私募基金合规知识自测</h1>
+        <p>行业新人快速入门测试</p>
+    </header>
+    
+    <div class="disclaimer">
+        <h3>重要提示：</h3>
+        <p>本测试旨在普及私募基金基础知识及合规要点，供行业新人学习参考之用。内容基于当前法律法规及行业实践，可能随政策更新而调整。</p>
+        <p><strong>本测试不构成：</strong></p>
+        <ul>
+            <li>任何形式的投资建议或推荐</li>
+            <li>官方执业资格考试辅导或认证</li>
+        </ul>
+        <p>使用者应结合自身情况独立判断，并咨询专业人士。本公众号及运营方对因使用本测试内容而产生的任何损失不承担责任。</p>
+    </div>
+    
+    <div class="container" id="question-container">
+        <div class="question" id="question-text"></div>
+        
+        <div class="options" id="options-list"></div>
+        
+        <div class="progress" id="progress-text"></div>
+        
+        <button id="prev-btn" class="btn secondary">上一题</button>
+        <button id="next-btn" class="btn">下一题</button>
+        <button id="submit-btn" class="btn" style="display:none; margin-top:15px;">提交答卷</button>
+    </div>
+    
+    <div class="container" id="result-container">
+        <h2 style="text-align: center; margin-bottom: 20px;">测试结果</h2>
+        <div id="result-score"></div>
+        <div class="result-feedback" id="result-feedback"></div>
+        
+        <div id="review-section"></div>
+        
+        <button id="restart-btn" class="btn">重新测试</button>
+    </div>
+    
+    <footer>
+        <p>© 2023 私募基金合规指南 | 普及行业知识，助力合规发展</p>
+    </footer>
+    
+    <script>
+        // 私募基金测试题目数据
+        const questions = [
+            {
+                id: 1,
+                question: "私募基金可以向以下哪类对象募集资金？",
+                options: [
+                    "A. 社会公众",
+                    "B. 合格投资者",
+                    "C. 任何个人或机构",
+                    "D. 特定行业从业人员"
+                ],
+                correctIndex: 1,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者是指具备相应风险识别能力和风险承担能力，投资于单只私募基金的金额不低于100万元且符合下列相关标准的单位和个人：（一）净资产不低于1000万元的单位；（二）金融资产不低于300万元或者最近三年年均收入不低于50万元的个人。私募基金只能向合格投资者募集。"
+            },
+            {
+                id: 2,
+                question: "私募基金管理人登记后，应在多长时间内备案首只私募基金产品？",
+                options: [
+                    "A. 3个月",
+                    "B. 6个月",
+                    "C. 12个月",
+                    "D. 18个月"
+                ],
+                correctIndex: 1,
+                explanation: "【解析】根据《关于进一步规范私募基金管理人登记若干事项的公告》，新登记的私募基金管理人在办结登记手续之日起6个月内仍未备案首只私募基金产品的，中国基金业协会将注销该私募基金管理人登记。"
+            },
+            {
+                id: 3,
+                question: "私募基金募集过程中，以下哪种行为是被允许的？",
+                options: [
+                    "A. 通过报纸、广告等公开方式宣传",
+                    "B. 向不特定对象发送产品介绍",
+                    "C. 通过官方网站公开宣传基金管理人品牌",
+                    "D. 承诺保本保收益"
+                ],
+                correctIndex: 2,
+                explanation: "【解析】根据《私募投资基金募集行为管理办法》第二十四条，募集机构及其从业人员推介私募基金时，禁止有以下行为：（一）公开推介或者变相公开推介；（二）推介材料虚假记载、误导性陈述或者重大遗漏；（三）以任何方式承诺投资者资金不受损失，或者以任何方式承诺投资者最低收益，包括宣传'预期收益'、'预计收益'、'预测投资业绩'等相关内容；（四）夸大或者片面推介基金。其中，允许的是基金管理人品牌宣传，但不得涉及具体产品。"
+            },
+            {
+                id: 4,
+                question: "私募基金投资者投资于单只私募基金的金额最低要求是？",
+                options: [
+                    "A. 10万元",
+                    "B. 30万元",
+                    "C. 50万元",
+                    "D. 100万元"
+                ],
+                correctIndex: 3,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者投资于单只私募基金的金额不低于100万元。"
+            },
+            {
+                id: 5,
+                question: "私募基金募集机构应当履行什么程序以确定投资者是否为合格投资者？",
+                options: [
+                    "A. 仅要求投资者自行承诺",
+                    "B. 仅要求投资者提供资产证明",
+                    "C. 进行风险测评和资产证明审核",
+                    "D. 仅要求投资者填写调查问卷"
+                ],
+                correctIndex: 2,
+                explanation: "【解析】根据《私募投资基金募集行为管理办法》第二十八条，募集机构应当采取合理方式向投资者披露私募基金信息，揭示投资风险，确保所披露信息的真实性、准确性和完整性。同时，募集机构应当要求投资者提供必要的资产证明文件或收入证明，合理审慎地审查投资者是否符合合格投资者条件。此外，还需要进行风险测评，确保投资者风险识别和承担能力与产品风险等级匹配。"
+            }
+        ];
+
+        // DOM元素
+        const questionText = document.getElementById('question-text');
+        const optionsList = document.getElementById('options-list');
+        const progressText = document.getElementById('progress-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const questionContainer = document.getElementById('question-container');
+        const resultContainer = document.getElementById('result-container');
+        const resultScore = document.getElementById('result-score');
+        const resultFeedback = document.getElementById('result-feedback');
+        const reviewSection = document.getElementById('review-section');
+        const restartBtn = document.getElementById('restart-btn');
+        
+        // 状态变量
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        
+        // 初始化
+        function init() {
+            // 尝试从本地存储恢复进度
+            const savedProgress = localStorage.getItem('fundQuizProgress');
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                currentQuestionIndex = progress.currentQuestionIndex;
+                userAnswers = progress.userAnswers;
+            }
+            
+            renderQuestion();
+        }
+        
+        // 渲染当前题目
+        function renderQuestion() {
+            const question = questions[currentQuestionIndex];
+            
+            // 显示题目
+            questionText.textContent = question.question;
+            
+            // 清空选项
+            optionsList.innerHTML = '';
+            
+            // 添加选项
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = option;
+                optionElement.dataset.index = index;
+                
+                optionElement.addEventListener('click', () => {
+                    // 移除所有选项的选中状态
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // 标记当前选中的选项
+                    optionElement.classList.add('selected');
+                    userAnswers[currentQuestionIndex] = index;
+                    
+                    // 保存进度
+                    saveProgress();
+                });
+                
+                optionsList.appendChild(optionElement);
+            });
+            
+            // 更新进度
+            progressText.textContent = `题目 ${currentQuestionIndex + 1} / ${questions.length}`;
+            
+            // 更新按钮状态
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.style.display = currentQuestionIndex < questions.length - 1 ? 'block' : 'none';
+            submitBtn.style.display = currentQuestionIndex === questions.length - 1 ? 'block' : 'none';
+        }
+        
+        // 上一题
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+        
+        // 下一题
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        });
+        
+        // 提交答卷
+        submitBtn.addEventListener('click', showResults);
+        
+        // 显示结果
+        function showResults() {
+            // 计算得分
+            let correctCount = 0;
+            questions.forEach((question, index) => {
+                if (userAnswers[index] === question.correctIndex) {
+                    correctCount++;
+                }
+            });
+            
+            const score = Math.round((correctCount / questions.length) * 100);
+            
+            // 显示得分
+            resultScore.textContent = `${score}分 (${correctCount}/${questions.length})`;
+            
+            // 显示评价
+            if (score >= 90) {
+                resultFeedback.textContent = "优秀！您对私募基金合规知识掌握得很好！";
+            } else if (score >= 70) {
+                resultFeedback.textContent = "良好！您已经掌握了大部分私募基金合规要点！";
+            } else if (score >= 60) {
+                resultFeedback.textContent = "及格！请继续加强私募基金合规知识的学习！";
+            } else {
+                resultFeedback.textContent = "需要努力！建议系统学习私募基金合规基础知识！";
+            }
+            
+            // 显示题目回顾
+            reviewSection.innerHTML = '';
+            questions.forEach((question, index) => {
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+                
+                // 问题
+                const questionElement = document.createElement('div');
+                questionElement.className = 'review-question';
+                questionElement.textContent = `${index + 1}. ${question.question}`;
+                reviewItem.appendChild(questionElement);
+                
+                // 用户答案
+                const userAnswer = document.createElement('div');
+                userAnswer.className = 'review-answer';
+                
+                if (userAnswers[index] !== null) {
+                    const isCorrect = userAnswers[index] === question.correctIndex;
+                    userAnswer.textContent = `您的答案: ${question.options[userAnswers[index]]}`;
+                    userAnswer.classList.add(isCorrect ? 'correct' : 'incorrect');
+                } else {
+                    userAnswer.textContent = "您未回答此题";
+                    userAnswer.classList.add('incorrect');
+                }
+                
+                reviewItem.appendChild(userAnswer);
+                
+                // 正确答案
+                const correctAnswer = document.createElement('div');
+                correctAnswer.className = 'review-answer correct';
+                correctAnswer.textContent = `正确答案: ${question.options[question.correctIndex]}`;
+                reviewItem.appendChild(correctAnswer);
+                
+                // 解析
+                const explanation = document.createElement('div');
+                explanation.className = 'review-explanation';
+                explanation.innerHTML = `<h4>解析：</h4><p>${question.explanation}</p>`;
+                reviewItem.appendChild(explanation);
+                
+                reviewSection.appendChild(reviewItem);
+            });
+            
+            // 切换显示
+            questionContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            
+            // 清除保存的进度
+            localStorage.removeItem('fundQuizProgress');
+        }
+        
+        // 重新测试
+        restartBtn.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            resultContainer.style.display = 'none';
+            questionContainer.style.display = 'block';
+            renderQuestion();
+        });
+        
+        // 保存进度
+        function saveProgress() {
+            const progress = {
+                currentQuestionIndex: currentQuestionIndex,
+                userAnswers: userAnswers
+            };
+            localStorage.setItem('fundQuizProgress', JSON.stringify(progress));
+        }
+        
+        // 初始化应用
+        init();
+    </script>
+</body>
+</html>
