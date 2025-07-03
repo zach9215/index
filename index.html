@@ -1,67 +1,67 @@
-
- 
-<头>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>私募基金合规知识测试 - 题库版</title>
-    <样式>
-        *  {
-            盒模型：边框盒;
-            边距：0;
-            
-            字体家族：'PingFang SC'，'Microsoft YaHei'，无衬线字体;
-        输入：输入：}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
         
-        身体
-            背景：线性渐变（135度，#f5f7fa 0%，#e4e7f1 100%）;
-            颜色: #333;
-            行高: 1.6;
-            
-            最大宽度：900像素;
-            边距：0 自动;
-            最小高度：100vh;
-        输入：}
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
         
-        标题 {
-            文本对齐：居中;
-            下外边距：25像素;
-             
-            下边框：1像素 实线#e1e4e8;
-            背景：线性渐变（135度，#1a365d 0%，#2c5282 100%）;
-            边框半径：15像素;
-            颜色：白色;
-            box-shadow：0 6px 12px rgba(0，0，0，0.15);
-            位置：相对;
-            溢出：隐藏;
-        输入：}
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 25px 0;
+            border-bottom: 1px solid #e1e4e8;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
         
-        标题:之前
-            内容：“ lẽ”
-            位置：绝对;
-            顶部：-50像素;
-            右：-50像素;
-            宽度：150像素;
-            高度：150像素;
-            背景： rgba（255，255，255，0.1）;
-            边框半径：50%；
-        输入：}
+        header:before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
         
-        标题:之后 {
-            内容："";
-            位置：绝对;
-            底部：-30像素;
-            左：-30像素;
-            宽度：100像素;
-            高度：100像素;
-            背景： rgba（255，255，255，0.1）;
-            边框半径：50%;
-        输入：}
+        header:after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
         
-         
-            字体大小：2.2rem;
-            下边距：10像素;
-            位置：相对;
-            z轴索引：2;
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
@@ -594,9 +594,9 @@
         <p class="welcome-text">
             本测试基于《私募投资基金监督管理暂行办法》等法规设计，涵盖募集行为、投资者适当性、信息披露等核心合规要点。
             每次测试将从题库中随机抽取5道题目，帮助您巩固私募基金合规知识体系。
-        </段>
+        </p>
         
-        <div class="特点">
+        <div class="features">
             <div class="feature-card fade-in" style="animation-delay: 0.1s">
                 <div class="feature-icon">📚</div>
                 <div class="feature-title">专业题库</div>
@@ -619,23 +619,23 @@
     
     <div class="container" id="question-container">
         <div class="question">
-            <div class="问题编号">1</div>
-            <div id="问题文本"></div>
+            <div class="question-number">1</div>
+            <div id="question-text"></div>
         </div>
         
-        <div class="选项" id="选项列表"></div>
+        <div class="options" id="options-list"></div>
         
-        <div 类="进度容器">
-            <div 类+"进度条">
-                <div class="进度条填充" id="进度条填充"></div>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
             </div>
             <div class="progress-text" id="progress-text"></div>
         </div>
         
-        <div 类="btn-container">
-            <按钮 id="上一题按钮" 类="按钮 次要">上一题</按钮>
-            <按钮 id="下题按钮" 类="按钮">下一题</按钮>
-            <按钮 id="提交按钮" 类="按钮" 样式="显示:无;">提交答案按钮</>
+        <div class="btn-container">
+            <button id="prev-btn" class="btn secondary">上一题</button>
+            <button id="next-btn" class="btn">下一题</button>
+            <button id="submit-btn" class="btn" style="display:none;">提交答卷</button>
         </div>
     </div>
     
@@ -644,40 +644,40 @@
         <div id="result-score"></div>
         <div class="result-feedback" id="result-feedback"></div>
         
-        <h3 类="审阅部分标题">题目解析</h3>
-        <div id="评论部分"></div>
+        <h3 class="review-section-title">题目解析</h3>
+        <div id="review-section"></div>
         
-        <按钮 id="重启按钮" 类="按钮" 样式="上边距: 30像素;">重新测试</按钮>
+        <button id="restart-btn" class="btn" style="margin-top: 30px;">重新测试</button>
     </div>
     
-    <页脚>
-        <p>© 2025 私募基金合规指南 | 普及行业知识，助力合规发展</p>
+    <footer>
+        <p>© 2023 私募基金合规指南 | 普及行业知识，助力合规发展</p>
         <p>题目内容基于最新法律法规及行业实践，定期更新</p>
-    </页脚>
+    </footer>
     
-    <脚本>
+    <script>
         // 私募基金测试题库（20道题）
-        常量 问题库 = [
+        const questionBank = [
             // 募集合规类
-            输入：
-                编号：1，
-                问题：“私募基金可以向以下哪类对象募集资金？”
-                选项：[
-                    "A. 社会公众"
-                    "B. 合格投资者"
-                    "C. 任何个人或机构"，
-                    &D. 特定行业从业人员
-                ]，
-                正确索引：1,
-                解释："【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者是指具备相应风险识别能力和风险承担能力，投资于单只私募基金的金额不低于100万元且符合下列相关标准的单位和个人：（一）净资产不低于1000万元的单位；（二）金融资产不低于300万元或者最近三年年均收入不低于50万元的个人。私募基金只能向合格投资者募集。"
-                类别：“募集合规”
+            {
+                id: 1,
+                question: "私募基金可以向以下哪类对象募集资金？",
+                options: [
+                    "A. 社会公众",
+                    "B. 合格投资者",
+                    "C. 任何个人或机构",
+                    "D. 特定行业从业人员"
+                ],
+                correctIndex: 1,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者是指具备相应风险识别能力和风险承担能力，投资于单只私募基金的金额不低于100万元且符合下列相关标准的单位和个人：（一）净资产不低于1000万元的单位；（二）金融资产不低于300万元或者最近三年年均收入不低于50万元的个人。私募基金只能向合格投资者募集。",
+                category: "募集合规"
             },
-            输入：
+            {
                 id: 2,
-                问题: "私募基金募集过程中，以下哪种行为是被允许的？"
-                选项：[
-                    "A. 通过报纸、广告等公开方式宣传"
-                    "B. 向不特定对象发送产品介绍"
+                question: "私募基金募集过程中，以下哪种行为是被允许的？",
+                options: [
+                    "A. 通过报纸、广告等公开方式宣传",
+                    "B. 向不特定对象发送产品介绍",
                     "C. 通过官方网站公开宣传基金管理人品牌",
                     "D. 承诺保本保收益"
                 ],
@@ -1124,47 +1124,47 @@
                 
                 // 问题
                 const questionElement = document.createElement('div');
-                questionElement.className = 'review-question';
+                questionElement.className = 'review-question';问题元素.类名 = '评论问题';
                 
-                const questionNum = document.createElement('div');
+                常量 问题数量 = 文档.创建元素('div');
                 questionNum.className = 'review-question-num';
-                questionNum.textContent = index + 1;
+                问题编号.文本内容 = 索引 + 1;
                 
-                const questionText = document.createElement('div');
-                questionText.textContent = question.question;
+                常量 问题文本 = 文档.创建元素('div');
+                问题文本.文本内容 = 问题.问题;
                 
-                questionElement.appendChild(questionNum);
-                questionElement.appendChild(questionText);
-                reviewItem.appendChild(questionElement);
+                问题元素.appendChild(问题编号);
+                问题元素.appendChild(问题文本);
+                审查项目.附加子节点(问题元素);
                 
                 // 用户答案
-                const userAnswer = document.createElement('div');
-                userAnswer.className = 'review-answer';
+                常量 用户答案 = 文档.创建元素('div');
+                用户答案.类名 = '评论答案';
                 
-                if (userAnswers[index] !== null) {
-                    const isCorrect = userAnswers[index] === question.correctIndex;
-                    userAnswer.textContent = `您的答案: ${question.options[userAnswers[index]]}`;
-                    userAnswer.classList.add(isCorrect ? 'correct' : 'incorrect');
-                } else {
-                    userAnswer.textContent = "您未回答此题";
-                    userAnswer.classList.add('incorrect');
-                }
+                如果 (用户答案[索引] !== null) {
+                    常量 是否正确 = 用户答案[索引] === 问题.正确索引;
+                    userAnswer.textContent = 您的答案: ${question.options[userAnswers[index]]};
+                    用户答案.类列表.添加(是否正确 ? '正确' : '错误');
+                } 否则 {
+                    用户答案.文本内容 = "您未回答此题";
+                    用户答案.类列表.添加('错误');
+                输入：}
                 
-                reviewItem.appendChild(userAnswer);
+                审查项目.附加子节点(用户答案);
                 
                 // 正确答案
-                const correctAnswer = document.createElement('div');
-                correctAnswer.className = 'review-answer correct';
-                correctAnswer.textContent = `正确答案: ${question.options[question.correctIndex]}`;
-                reviewItem.appendChild(correctAnswer);
+                常量 正确答案 = 文档.创建元素('div');
+                正确答案.类名 = '查看答案 正确';
+                正确答案.文本内容 = 正确答案: ${问题.选项[问题.正确索引]};
+                审查项目.附加子节点(正确答案);
                 
                 // 解析
-                const explanation = document.createElement('div');
-                explanation.className = 'review-explanation';
-                explanation.innerHTML = `<h4>解析：</h4><p>${question.explanation}</p>`;
-                reviewItem.appendChild(explanation);
+                常量 解释 = 文档.创建元素('div');
+                解释.类名 = '评论解释';
+                解析.innerHTML = `<h4>解析：</h4><p>${question.explanation}</p>`;
+                审查项目.附加子节点(解释);
                 
-                reviewSection.appendChild(reviewItem);
+                评论部分.添加子节点(评论项);
             });
             
             // 切换显示
@@ -1172,16 +1172,16 @@
             resultContainer.style.display = 'block';
             
             // 滚动到顶部
-            window.scrollTo(0, 0);
-        }
+            窗口.滚动到(0, 0);
+        输入：}
         
         // 重新测试
-        function restartTest() {
-            startTest();
-        }
+        函数 重启测试() {
+            开始测试();
+        输入：}
         
         // 初始化应用
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
-</body>
-</html>
+        document.addEventListener('DOMContentLoaded', init);文档.添加事件监听器('DOMContentLoaded', 初始化);
+    </脚本>
+</主体>
+     </html>
