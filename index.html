@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私募基金合规知识测试 - 管理员反馈管理</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e1e4e8;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            padding-top: 50px;
+        }
+        
+        header:before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        header:after {
+            content: "";
+            position: absolute;
+            bottom: -25px;
+            left: -25px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 8px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 15px 0 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        #start-container {
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        #start-btn {
+        display: block;
+        margin: 20px auto 0;
+        max-width: 250px;
+        }
+
+        #question-container {
+            display: none;
+        }
+        
+        #result-container {
+            display: none;
+        }
+        
+        .welcome-title {
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .welcome-text {
+            margin-bottom: 20px;
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            text-align: left;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 180px;
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: #edf2f7;
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: #2b6cb0;
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2d3748;
+            font-size: 1.05rem;
+        }
+        
+        .feature-desc {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid #4299e1;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .question-number {
+            position: relative;
+            top: auto;
+            right: auto;
+            background: #4299e1;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .options {
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 14px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .option:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #cbd5e0;
+            transition: width 0.3s ease;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+            transform: translateX(6px);
+        }
+        
+        .option:hover:before {
+            width: 6px;
+            background: #4299e1;
+        }
+        
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #90caf9;
+            font-weight: 500;
+            transform: translateX(6px);
+        }
+        
+        .option.selected:before {
+            width: 6px;
+            background: #3182ce;
+        }
+        
+        .option-letter {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .option.selected .option-letter {
+            background: #3182ce;
+            color: white;
+        }
+        
+        .progress-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-bar {
+            flex-grow: 1;
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 12px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4299e1, #3182ce);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.95rem;
+            min-width: 90px;
+            font-weight: 500;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: block;
+            padding: 14px 22px;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover:after {
+            transform: rotate(30deg) translate(10%, 10%);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn:disabled:after {
+            display: none;
+        }
+        
+        .btn.secondary {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: #1a365d;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .btn.secondary:hover {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            position: relative;
+        }
+        
+        .result-header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, #4299e1, #3182ce);
+            border-radius: 2px;
+        }
+        
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .result-feedback {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #2d3748;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+            border-left: 4px solid #48bb78;
+            font-weight: 500;
+        }
+        
+        .result-details {
+            display: flex;
+            justify-content: space-around;
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+        }
+        
+        .detail-item {
+            flex: 1;
+        }
+        
+        .detail-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a365d;
+        }
+        
+        .detail-label {
+            font-size: 0.95rem;
+            color: #718096;
+        }
+        
+        .review-section-title {
+            text-align: center;
+            margin: 20px 0 15px;
+            color: #2d3748;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .review-section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #4299e1, #3182ce);
+            border-radius: 2px;
+        }
+        
+        .review-item {
+            padding: 18px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .review-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #e2e8f0;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .review-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+        }
+        
+        .review-question {
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #2d3748;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .review-question-num {
+            background: #4299e1;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+        }
+        
+        .review-answer {
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+        
+        .review-answer:before {
+            content: '•';
+            margin-right: 8px;
+            font-size: 1.6rem;
+        }
+        
+        .correct {
+            background: #f0fff4;
+            border-left: 3px solid #48bb78;
+        }
+        
+        .incorrect {
+            background: #fff5f5;
+            border-left: 3px solid #f56565;
+        }
+        
+        .review-explanation {
+            background: #ebf8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #2d3748;
+            border-left: 3px solid #4299e1;
+        }
+        
+        .review-explanation h4 {
+            color: #2b6cb0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            text-align: center;
+            color: #718096;
+            font-size: 0.85rem;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 768px) {
+            body{
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .btn {
+                flex: 100%;
+                margin-top: 8px;
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .features {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .feature-card {
+                min-width: auto;
+                padding: 12px;
+            }
+            
+            .welcome-title {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+            }
+            
+            .welcome-text {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+            
+            .result-feedback {
+                font-size: 1.1rem;
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .review-section-title {
+                font-size: 1.3rem;
+                margin: 15px 0 10px;
+            }
+            
+            .review-item {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .review-question {
+                font-size: 1.05rem;
+            }
+            
+            .review-answer {
+                font-size: 0.95rem;
+            }
+            
+            .review-explanation {
+                padding: 12px;
+                margin-top: 12px;
+            }
+            
+            .score-badge {
+                width: 85px;
+                height: 85px;
+                font-size: 1.6rem;
+            }
+            
+            .detail-value {
+                font-size: 1.3rem;
+            }
+            
+            .detail-label {
+                font-size: 0.9rem;
+            }
+            
+            footer {
+                padding: 15px;
+                margin-top: 20px;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        /* 新增按钮居中样式 */
+        #start-btn {
+            display: block;
+            margin: 20px auto 0;
+            max-width: 250px;
+        }
+        
+        @media (max-width: 768px) {
+            #start-btn {
+                max-width: 100%;
+            }
+        }
+        /* 新增重新测试按钮居中样式 */
+        #restart-btn {
+            display: block;
+            margin: 20px auto 0;
+            max-width: 250px;
+        }
+
+        @media (max-width: 768px) {
+            #restart-btn {
+                max-width: 100%;
+            }
+        }
+        
+        /* 反馈区域样式 */
+        #feedback-container {
+            display: none;
+            padding: 25px;
+        }
+        
+        .feedback-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e4e8;
+            position: relative;
+        }
+        
+        .feedback-header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #4299e1, #3182ce);
+            border-radius: 2px;
+        }
+        
+        .feedback-form {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+        
+        .feedback-btn-container {
+            display: flex;
+            justify-content: center; 
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap:wrap;
+        }
+        
+        .feedback-btn {
+            min-width: 150px;
+            width: auto;
+            padding: 14px 25px;
+        }
+        
+        .feedback-message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .success {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+            color: #2f855a;
+            display: block;
+        }
+        
+        .error {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+            color: #c53030;
+            display: block;
+        }
+        
+        #feedback-trigger {
+            display: block;
+            margin: 20px auto 0;
+            max-width: 250px;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            color: #1a365d;
+        }
+        
+        #feedback-trigger:hover {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+        }
+        
+        /* 管理面板样式 */
+        #admin-panel {
+            display: none;
+            padding: 25px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e4e8;
+            position: relative;
+        }
+        
+        .admin-header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #4299e1, #3182ce);
+            border-radius: 2px;
+        }
+        
+        .feedback-list {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .feedback-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .feedback-item:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+        .feedback-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .feedback-content {
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #4299e1;
+        }
+        
+        .empty-feedback {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            font-style: italic;
+        }
+        
+        /* 管理员登录按钮样式 */
+        #admin-login-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        #admin-login-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            .feedback-btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .feedback-btn {
+                width: 100%;
+            }
+            
+            header {
+                padding-top: 60px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-top: 5px;
+                line-height: 1.3;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+            
+            #admin-login-btn {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                max-width: 100px;
+            }
+            
+            /* 选项字体大小优化 */
+            .option {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            
+            .option-letter {
+                width: 22px;
+                height: 22px;
+                font-size: 0.85rem;
+            }
+            
+            .question {
+                padding: 12px;
+            }
+            
+            .btn {
+                padding: 12px 15px;
+            }
+        }
+
+        /* 非常小的设备优化 */
+        @media (max-width: 360px) {
+            #admin-login-btn {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+                max-width: 80px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .subtitle {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* 反馈搜索和筛选 */
+        .feedback-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #cbd5e0;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background: #e2e8f0;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn.active {
+            background: #4299e1;
+            color: white;
+        }
+        
+        /* 反馈状态标签 */
+        .feedback-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        
+        .status-new {
+            background: #f6e05e;
+            color: #975a16;
+        }
+        
+        .status-reviewed {
+            background: #68d391;
+            color: #22543d;
+        }
+        
+        .status-closed {
+            background: #cbd5e0;
+            color: #4a5568;
+        }
+        
+        /* 反馈操作按钮 */
+        .feedback-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border: 1px solid #cbd5e0;
+            background: white;
+        }
+        
+        /* 模拟网络请求状态 */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(66, 153, 225, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #4299e1;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 分页控件 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 5px;
+        }
+        
+        .page-btn {
+            padding: 6px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .page-btn.active {
+            background: #4299e1;
+            color: white;
+            border-color: #4299e1;
+        }
+        
+        /* 反馈统计卡片 */
+        .feedback-stats {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            flex: 1;
+            min-width: 150px;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .stat-card-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card-label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="admin-login-btn">管理员登录</button>
+        <h1>私募基金合规知识自测</h1>
+        <div class="subtitle">专业题库版 - 管理员反馈管理</div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="question-count">20</div>
+                <div class="stat-label">总题目数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="test-count">5</div>
+                <div class="stat-label">每次测试题数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="category-count">3</div>
+                <div class="stat-label">知识分类</div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container" id="start-container">
+        <h2 class="welcome-title">私募基金合规知识测试</h2>
+        <p class="welcome-text">
+            本测试基于法律法规设计，涵盖募集行为、投资者适当性、信息披露等核心合规要点。
+            每次测试将从题库中随机抽取5道题目。测试完后末尾可以提交用户反馈，欢迎提供意见。
+        </p>
+        
+        <div class="features">
+            <div class="feature-card fade-in" style="animation-delay: 0.1s">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">专业题库</div>
+                <div class="feature-desc">精选题目，覆盖核心合规要点</div>
+            </div>
+            <div class="feature-card fade-in" style="animation-delay: 0.2s">
+                <div class="feature-icon">🔄</div>
+                <div class="feature-title">随机抽题</div>
+                <div class="feature-desc">每次测试随机抽取5道不同题目</div>
+            </div>
+            <div class="feature-card fade-in" style="animation-delay: 0.3s">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">详细解析</div>
+                <div class="feature-desc">提供法规依据和详细解析</div>
+            </div>
+        </div>
+        
+        <button id="start-btn" class="btn">开始测试</button>
+    </div>
+    
+    <div class="container" id="question-container">
+        <div class="question">
+            <div class="question-number">1</div>
+            <div id="question-text"></div>
+        </div>
+        
+        <div class="options" id="options-list"></div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-text" id="progress-text"></div>
+        </div>
+        
+        <div class="btn-container">
+            <button id="prev-btn" class="btn secondary">上一题</button>
+            <button id="next-btn" class="btn">下一题</button>
+            <button id="submit-btn" class="btn" style="display:none;">提交答卷</button>
+        </div>
+    </div>
+    
+    <div class="container" id="result-container">
+        <div class="result-header">
+            <h2>测试结果</h2>
+            <div class="score-badge" id="score-badge">80</div>
+        </div>
+        
+        <div class="result-feedback" id="result-feedback"></div>
+        
+        <div class="result-details">
+            <div class="detail-item">
+                <div class="detail-value" id="correct-count">4</div>
+                <div class="detail-label">答对题数</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="total-count">5</div>
+                <div class="detail-label">总题数</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-value" id="accuracy">80%</div>
+                <div class="detail-label">正确率</div>
+            </div>
+        </div>
+        
+        <h3 class="review-section-title">题目解析</h3>
+        <div id="review-section"></div>
+        
+        <button id="restart-btn" class="btn" style="margin-top: 20px;">重新测试</button>
+        
+        <button id="feedback-trigger" class="btn secondary">提供反馈意见</button>
+    </div>
+    
+    <div class="container" id="feedback-container">
+        <div class="feedback-header">
+            <h2>用户反馈</h2>
+            <p>您的宝贵意见将帮助我们改进测试题库</p>
+        </div>
+        
+        <div class="feedback-form">
+            <div class="form-group">
+                <label for="feedback-name">姓名（可选）</label>
+                <input type="text" id="feedback-name" placeholder="请输入您的姓名">
+            </div>
+            
+            <div class="form-group">
+                <label for="feedback-contact">联系方式（可选）</label>
+                <input type="text" id="feedback-contact" placeholder="请输入您的邮箱或手机号">
+            </div>
+            
+            <div class="form-group">
+                <label for="feedback-content">反馈内容 *</label>
+                <textarea id="feedback-content" placeholder="请描述您遇到的问题、改进建议或其他意见..."></textarea>
+            </div>
+            
+            <div class="feedback-btn-container">
+                <button id="submit-feedback" class="btn feedback-btn">提交反馈</button>
+                <button id="cancel-feedback" class="btn secondary feedback-btn">取消</button>
+            </div>
+            
+            <div id="feedback-message" class="feedback-message"></div>
+        </div>
+    </div>
+    
+    <div class="container" id="admin-panel">
+        <div class="admin-header">
+            <h2>用户反馈管理系统</h2>
+            <p>所有用户提交的反馈意见</p>
+            <p style="color: #e53e3e; font-size: 0.9rem; margin-top: 10px;">注意：反馈数据存储在云端，管理员可在任何设备上查看</p>
+        </div>
+        
+        <!-- 反馈统计 -->
+        <div class="feedback-stats">
+            <div class="stat-card">
+                <div class="stat-card-value" id="total-feedback">0</div>
+                <div class="stat-card-label">总反馈数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-value" id="new-feedback">0</div>
+                <div class="stat-card-label">未处理反馈</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-value" id="reviewed-feedback">0</div>
+                <div class="stat-card-label">已处理反馈</div>
+            </div>
+        </div>
+        
+        <!-- 反馈搜索和筛选 -->
+        <div class="feedback-controls">
+            <div class="search-box">
+                <i>🔍</i>
+                <input type="text" id="feedback-search" placeholder="搜索反馈内容...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-status="all">全部</button>
+                <button class="filter-btn" data-status="new">未处理</button>
+                <button class="filter-btn" data-status="reviewed">已处理</button>
+                <button class="filter-btn" data-status="closed">已关闭</button>
+            </div>
+        </div>
+        
+        <!-- 反馈列表 -->
+        <div class="feedback-list" id="feedback-list">
+            <div class="empty-feedback">正在加载反馈数据...</div>
+        </div>
+        
+        <!-- 分页控件 -->
+        <div class="pagination" id="pagination"></div>
+        
+        <button id="back-to-test" class="btn">返回测试</button>
+    </div>
+    
+    <footer>
+        <p>© 2025 | 判理社</p>
+        <p>题目内容后续将定期维护</p>
+    </footer>
+    
+    <script>
+        // 私募基金测试题库（500道题）
+        const questionBank = [
+            // 募集合规类
+            {
+                id: 1,
+                question: "私募基金可以向以下哪类对象募集资金？",
+                options: [
+                    "A. 社会公众",
+                    "B. 合格投资者",
+                    "C. 任何个人或机构",
+                    "D. 特定行业从业人员"
+                ],
+                correctIndex: 1,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十二条，私募基金的合格投资者是指具备相应风险识别能力和风险承担能力，投资于单只私募基金的金额不低于100万元且符合下列相关标准的单位和个人：（一）净资产不低于1000万元的单位；（二）金融资产不低于300万元或者最近三年年均收入不低于50万元的个人。私募基金只能向合格投资者募集。",
+                category: "募集合规"
+            },
+            {
+                id: 2,
+                question: "私募基金管理人应当在募集完毕后多少工作日内进行备案？",
+                options: [
+                    "A. 5个工作日",
+                    "B. 10个工作日",
+                    "C. 20个工作日",
+                    "D. 30个工作日"
+                ],
+                correctIndex: 2,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第八条，各类私募基金募集完毕，私募基金管理人应当根据基金业协会的规定，办理基金备案手续，报送基本信息。私募基金备案材料完备且符合要求的，基金业协会应当自收齐备案材料之日起20个工作日内，通过网站公示私募基金基本情况的方式，为私募基金办结备案手续。",
+                category: "募集合规"
+            },
+            {
+                id: 3,
+                question: "下列哪项不属于私募基金合格投资者？",
+                options: [
+                    "A. 净资产1000万元的企业",
+                    "B. 金融资产300万元的个人",
+                    "C. 最近三年年均收入50万元的个人",
+                    "D. 金融资产50万元的个人"
+                ],
+                correctIndex: 3,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十二条，合格投资者的标准是：单位净资产不低于1000万元；个人金融资产不低于300万元或者最近三年年均收入不低于50万元。选项D中的个人金融资产只有50万元，不符合合格投资者标准。",
+                category: "募集合规"
+            },
+            // 投资者适当性类
+            {
+                id: 4,
+                question: "私募基金管理人向投资者销售私募基金时，以下哪项是必须进行的程序？",
+                options: [
+                    "A. 进行风险承受能力评估",
+                    "B. 承诺最低收益",
+                    "C. 公开宣传基金业绩",
+                    "D. 向非特定对象推介"
+                ],
+                correctIndex: 0,
+                explanation: "【解析】根据《私募投资基金募集行为管理办法》第十七条，募集机构应当向特定对象推介私募基金，在推介私募基金之前应当采取问卷调查等方式履行特定对象确定程序，对投资者风险识别能力和风险承担能力进行评估。",
+                category: "投资者适当性"
+            },
+            {
+                id: 5,
+                question: "私募基金投资者适当性管理的内容不包括以下哪项？",
+                options: [
+                    "A. 了解投资者的相关信息",
+                    "B. 评估投资者的风险识别能力和风险承担能力",
+                    "C. 承诺保本保收益",
+                    "D. 向投资者提供与其风险承受能力相匹配的产品"
+                ],
+                correctIndex: 2,
+                explanation: "【解析】根据《私募投资基金监督管理暂行办法》第十六条，私募基金管理人自行销售私募基金的，应当采取问卷调查等方式，对投资者的风险识别能力和风险承担能力进行评估。但不得向投资者承诺投资本金不受损失或者保证最低收益。",
+                category: "投资者适当性"
+            },
+            // 信息披露类
+            {
+                id: 6,
+                question: "私募基金管理人应当向投资者披露的信息不包括以下哪项？",
+                options: [
+                    "A. 基金合同",
+                    "B. 基金的投资情况",
+                    "C. 基金的资产负债情况",
+                    "D. 其他投资者的个人信息"
+                ],
+                correctIndex: 3,
+                explanation: "【解析】根据《私募投资基金信息披露管理办法》第九条，信息披露义务人应当向投资者披露的信息包括：基金合同；招募说明书等宣传推介文件；基金的投资情况；基金的资产负债情况；基金的投资收益分配情况；基金承担的费用和业绩报酬安排；可能存在的利益冲突等。但不包括其他投资者的个人信息。",
+                category: "信息披露"
+            },
+            {
+                id: 7,
+                question: "私募基金管理人应当至少多久向投资者披露一次基金净值？",
+                options: [
+                    "A. 每日",
+                    "B. 每周",
+                    "C. 每月",
+                    "D. 每季度"
+                ],
+                correctIndex: 3,
+                explanation: "【解析】根据《私募投资基金信息披露管理办法》第十六条，私募基金运行期间，信息披露义务人应当在每季度结束之日起10个工作日以内向投资者披露基金净值、主要财务指标以及投资组合情况等信息。",
+                category: "信息披露"
+            }
+        ];
+
+        // DOM元素
+        const startContainer = document.getElementById('start-container');
+        const questionContainer = document.getElementById('question-container');
+        const resultContainer = document.getElementById('result-container');
+        const questionText = document.getElementById('question-text');
+        const optionsList = document.getElementById('options-list');
+        const progressText = document.getElementById('progress-text');
+        const progressFill = document.getElementById('progress-fill');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const startBtn = document.getElementById('start-btn');
+        const resultFeedback = document.getElementById('result-feedback');
+        const reviewSection = document.getElementById('review-section');
+        const restartBtn = document.getElementById('restart-btn');
+        const correctCountEl = document.getElementById('correct-count');
+        const totalCountEl = document.getElementById('total-count');
+        const accuracyEl = document.getElementById('accuracy');
+        const scoreBadge = document.getElementById('score-badge');
+        const feedbackTrigger = document.getElementById('feedback-trigger');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const submitFeedbackBtn = document.getElementById('submit-feedback');
+        const cancelFeedbackBtn = document.getElementById('cancel-feedback');
+        const feedbackMessage = document.getElementById('feedback-message');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminPanel = document.getElementById('admin-panel');
+        const feedbackList = document.getElementById('feedback-list');
+        const backToTestBtn = document.getElementById('back-to-test');
+        const feedbackSearch = document.getElementById('feedback-search');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const paginationEl = document.getElementById('pagination');
+        const totalFeedbackEl = document.getElementById('total-feedback');
+        const newFeedbackEl = document.getElementById('new-feedback');
+        const reviewedFeedbackEl = document.getElementById('reviewed-feedback');
+        
+        // 状态变量
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let currentTestQuestions = [];
+        const TEST_QUESTION_COUNT = 5;
+        let feedbacks = [];
+        let currentFilter = 'all';
+        let currentPage = 1;
+        const ITEMS_PER_PAGE = 5;
+        
+        // JSONBin.io 配置 (模拟后端API)
+        const JSONBIN_BIN_ID = '665a4c9ae41b4d34e4f36c83';
+        const JSONBIN_API_KEY = '$2a$10$sVjBZk7bRk3j7z5y3q3YWe0F1z3v5rZ8X8j7d4f3g2h3j5k6l7m8n9o0p';
+        const JSONBIN_API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+        
+        // 初始化
+        function init() {
+            document.getElementById('question-count').textContent = questionBank.length;
+            document.getElementById('test-count').textContent = TEST_QUESTION_COUNT;
+            
+            const categories = [...new Set(questionBank.map(q => q.category))];
+            document.getElementById('category-count').textContent = categories.length;
+            
+            startBtn.addEventListener('click', startTest);
+            restartBtn.addEventListener('click', restartTest);
+            feedbackTrigger.addEventListener('click', showFeedbackForm);
+            submitFeedbackBtn.addEventListener('click', submitFeedback);
+            cancelFeedbackBtn.addEventListener('click', cancelFeedback);
+            adminLoginBtn.addEventListener('click', showAdminPanel);
+            backToTestBtn.addEventListener('click', backToTest);
+            
+            // 绑定搜索和筛选事件
+            feedbackSearch.addEventListener('input', filterFeedbacks);
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.status;
+                    currentPage = 1;
+                    filterFeedbacks();
+                });
+            });
+            
+            // 尝试从云端加载反馈
+            loadFeedbacksFromCloud();
+        }
+        
+        // 开始测试
+        function startTest() {
+            currentTestQuestions = getRandomQuestions(TEST_QUESTION_COUNT);
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentTestQuestions.length).fill(null);
+            
+            startContainer.style.display = 'none';
+            questionContainer.style.display = 'block';
+            resultContainer.style.display = 'none';
+            feedbackContainer.style.display = 'none';
+            adminPanel.style.display = 'none';
+            
+            renderQuestion();
+            window.scrollTo(0, 0);
+        }
+        
+        // 从题库中随机选择题目
+        function getRandomQuestions(count) {
+            const shuffled = [...questionBank];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled.slice(0, count);
+        }
+        
+        // 渲染当前题目
+        function renderQuestion() {
+            const question = currentTestQuestions[currentQuestionIndex];
+            
+            questionText.textContent = question.question;
+            document.querySelector('.question-number').textContent = currentQuestionIndex + 1;
+            
+            optionsList.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                
+                const optionLetter = document.createElement('div');
+                optionLetter.className = 'option-letter';
+                optionLetter.textContent = option.charAt(0);
+                
+                const optionText = document.createElement('div');
+                optionText.textContent = option;
+                
+                optionElement.appendChild(optionLetter);
+                optionElement.appendChild(optionText);
+                optionElement.dataset.index = index;
+                
+                optionElement.addEventListener('click', () => {
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    optionElement.classList.add('selected');
+                    userAnswers[currentQuestionIndex] = index;
+                    
+                    if (currentQuestionIndex === currentTestQuestions.length - 1) {
+                        submitBtn.style.display = 'block';
+                    }
+                });
+                
+                optionsList.appendChild(optionElement);
+            });
+            
+            const progressPercent = ((currentQuestionIndex + 1) / currentTestQuestions.length) * 100;
+            progressText.textContent = `进度: ${currentQuestionIndex + 1}/${currentTestQuestions.length}`;
+            progressFill.style.width = `${progressPercent}%`;
+            
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.style.display = currentQuestionIndex < currentTestQuestions.length - 1 ? 'block' : 'none';
+            submitBtn.style.display = currentQuestionIndex === currentTestQuestions.length - 1 ? 'block' : 'none';
+        }
+        
+        // 上一题
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+        
+        // 下一题
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < currentTestQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        });
+        
+        // 提交答卷
+        submitBtn.addEventListener('click', showResults);
+        
+        // 显示结果
+        function showResults() {
+            let correctCount = 0;
+            currentTestQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correctIndex) {
+                    correctCount++;
+                }
+            });
+            
+            const score = Math.round((correctCount / currentTestQuestions.length) * 100);
+            
+            scoreBadge.textContent = score;
+            correctCountEl.textContent = correctCount;
+            totalCountEl.textContent = currentTestQuestions.length;
+            accuracyEl.textContent = `${score}%`;
+            
+            if (score >= 90) {
+                resultFeedback.textContent = "🎉 优秀！您对私募基金合规知识掌握得非常扎实！";
+                scoreBadge.style.background = "linear-gradient(135deg, #48bb78 0%, #38a169 100%)";
+            } else if (score >= 80) {
+                resultFeedback.textContent = "👍 良好！您已经掌握了大部分私募基金合规要点！";
+                scoreBadge.style.background = "linear-gradient(135deg, #4299e1 0%, #3182ce 100%)";
+            } else if (score >= 70) {
+                resultFeedback.textContent = "💪 不错！请继续加强私募基金合规知识的学习！";
+                scoreBadge.style.background = "linear-gradient(135deg, #ed8936 0%, #dd6b20 100%)";
+            } else if (score >= 60) {
+                resultFeedback.textContent = "📚 及格！建议系统学习私募基金合规基础知识！";
+                scoreBadge.style.background = "linear-gradient(135deg, #ecc94b 0%, #d69e2e 100%)";
+            } else {
+                resultFeedback.textContent = "📖 需要努力！私募基金合规知识对从业者至关重要，请认真学习！";
+                scoreBadge.style.background = "linear-gradient(135deg, #f56565 0%, #e53e3e 100%)";
+            }
+            
+            reviewSection.innerHTML = '';
+            currentTestQuestions.forEach((question, index) => {
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+                
+                const questionElement = document.createElement('div');
+                questionElement.className = 'review-question';
+                
+                const questionNum = document.createElement('div');
+                questionNum.className = 'review-question-num';
+                questionNum.textContent = index + 1;
+                
+                const questionText = document.createElement('div');
+                questionText.textContent = question.question;
+                
+                questionElement.appendChild(questionNum);
+                questionElement.appendChild(questionText);
+                reviewItem.appendChild(questionElement);
+                
+                const userAnswer = document.createElement('div');
+                userAnswer.className = 'review-answer';
+                
+                if (userAnswers[index] !== null) {
+                    const isCorrect = userAnswers[index] === question.correctIndex;
+                    userAnswer.textContent = `您的答案: ${question.options[userAnswers[index]]}`;
+                    userAnswer.classList.add(isCorrect ? 'correct' : 'incorrect');
+                } else {
+                    userAnswer.textContent = "您未回答此题";
+                    userAnswer.classList.add('incorrect');
+                }
+                
+                reviewItem.appendChild(userAnswer);
+                
+                const correctAnswer = document.createElement('div');
+                correctAnswer.className = 'review-answer correct';
+                correctAnswer.textContent = `正确答案: ${question.options[question.correctIndex]}`;
+                reviewItem.appendChild(correctAnswer);
+                
+                const explanation = document.createElement('div');
+                explanation.className = 'review-explanation';
+                explanation.innerHTML = `<h4>解析：</h4><p>${question.explanation}</p>`;
+                reviewItem.appendChild(explanation);
+                
+                reviewSection.appendChild(reviewItem);
+            });
+            
+            questionContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+            feedbackContainer.style.display = 'none';
+            adminPanel.style.display = 'none';
+            
+            window.scrollTo(0, 0);
+        }
+        
+        // 重新测试
+        function restartTest() {
+            startTest();
+        }
+        
+        // 显示反馈表单
+        function showFeedbackForm() {
+            feedbackContainer.style.display = 'block';
+            document.getElementById('feedback-name').value = '';
+            document.getElementById('feedback-contact').value = '';
+            document.getElementById('feedback-content').value = '';
+            feedbackMessage.style.display = 'none';
+            
+            feedbackContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // 提交反馈（解决跨设备问题）
+        function submitFeedback() {
+            const name = document.getElementById('feedback-name').value.trim();
+            const contact = document.getElementById('feedback-contact').value.trim();
+            const content = document.getElementById('feedback-content').value.trim();
+            
+            if (!content) {
+                feedbackMessage.textContent = '反馈内容不能为空！';
+                feedbackMessage.className = 'error';
+                feedbackMessage.style.display = 'block';
+                return;
+            }
+            
+            const feedback = {
+                id: Date.now(),
+                name: name || '匿名用户',
+                contact: contact || '未提供',
+                content: content,
+                timestamp: new Date().toLocaleString(),
+                status: 'new'
+            };
+            
+            // 显示加载状态
+            const originalText = submitFeedbackBtn.textContent;
+            submitFeedbackBtn.innerHTML = '<span class="loading"></span>提交中...';
+            submitFeedbackBtn.disabled = true;
+            
+            // 保存到云端
+            saveFeedbackToCloud(feedback, (success) => {
+                submitFeedbackBtn.textContent = originalText;
+                submitFeedbackBtn.disabled = false;
+                
+                if (success) {
+                    feedbackMessage.textContent = '反馈提交成功！感谢您的宝贵意见。';
+                    feedbackMessage.className = 'success';
+                    feedbackMessage.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        feedbackContainer.style.display = 'none';
+                    }, 3000);
+                } else {
+                    feedbackMessage.textContent = '提交失败，请稍后再试！';
+                    feedbackMessage.className = 'error';
+                    feedbackMessage.style.display = 'block';
+                }
+            });
+        }
+        
+        // 取消反馈
+        function cancelFeedback() {
+            feedbackContainer.style.display = 'none';
+        }
+        
+        // 显示管理员面板
+        function showAdminPanel() {
+            const password = prompt("请输入管理员密码：");
+            
+            if (password === "zhangzhiwei") {
+                adminPanel.style.display = 'block';
+                startContainer.style.display = 'none';
+                questionContainer.style.display = 'none';
+                resultContainer.style.display = 'none';
+                feedbackContainer.style.display = 'none';
+                
+                // 从云端重新加载反馈
+                feedbackList.innerHTML = '<div class="empty-feedback">正在加载反馈数据...</div>';
+                loadFeedbacksFromCloud(() => {
+                    renderFeedbackList();
+                    window.scrollTo(0, 0);
+                });
+            } else {
+                alert("密码错误！");
+            }
+        }
+        
+        // 返回测试
+        function backToTest() {
+            adminPanel.style.display = 'none';
+            startContainer.style.display = 'block';
+        }
+        
+        // 渲染反馈列表
+        function renderFeedbackList() {
+            feedbackList.innerHTML = '';
+            
+            if (feedbacks.length === 0) {
+                feedbackList.innerHTML = '<div class="empty-feedback">暂无用户反馈</div>';
+                return;
+            }
+            
+            const filtered = filterFeedbacks();
+            updateStats();
+            
+            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+            const paginatedItems = filtered.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+            
+            if (paginatedItems.length === 0) {
+                feedbackList.innerHTML = '<div class="empty-feedback">该筛选条件下没有反馈</div>';
+                renderPagination(filtered.length);
+                return;
+            }
+            
+            paginatedItems.forEach(feedback => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                
+                let statusText = '';
+                let statusClass = '';
+                switch(feedback.status) {
+                    case 'new':
+                        statusText = '未处理';
+                        statusClass = 'status-new';
+                        break;
+                    case 'reviewed':
+                        statusText = '已处理';
+                        statusClass = 'status-reviewed';
+                        break;
+                    default:
+                        statusText = '已关闭';
+                        statusClass = 'status-closed';
+                }
+                
+                feedbackItem.innerHTML = `
+                    <div class="feedback-meta">
+                        <span>${feedback.name} <span class="feedback-status ${statusClass}">${statusText}</span></span>
+                        <span>${feedback.timestamp}</span>
+                    </div>
+                    <div class="feedback-content">
+                        <p>${feedback.content}</p>
+                        ${feedback.contact !== '未提供' ? `<p><strong>联系方式:</strong> ${feedback.contact}</p>` : ''}
+                    </div>
+                    <div class="feedback-actions">
+                        <button class="action-btn" data-id="${feedback.id}" data-action="review">标记为已处理</button>
+                        <button class="action-btn" data-id="${feedback.id}" data-action="close">关闭反馈</button>
+                    </div>
+                `;
+                feedbackList.appendChild(feedbackItem);
+            });
+            
+            // 绑定操作按钮事件
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', handleFeedbackAction);
+            });
+            
+            // 渲染分页控件
+            renderPagination(filtered.length);
+        }
+        
+        // 更新反馈统计
+        function updateStats() {
+            totalFeedbackEl.textContent = feedbacks.length;
+            
+            const newCount = feedbacks.filter(f => f.status === 'new').length;
+            const reviewedCount = feedbacks.filter(f => f.status === 'reviewed').length;
+            
+            newFeedbackEl.textContent = newCount;
+            reviewedFeedbackEl.textContent = reviewedCount;
+        }
+        
+        // 渲染分页控件
+        function renderPagination(totalItems) {
+            paginationEl.innerHTML = '';
+            const pageCount = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            
+            if (pageCount <= 1) return;
+            
+            // 上一页按钮
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.textContent = '上一页';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderFeedbackList();
+                }
+            });
+            paginationEl.appendChild(prevBtn);
+            
+            // 页码按钮
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(pageCount, startPage + 4);
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'page-btn';
+                if (i === currentPage) {
+                    pageBtn.classList.add('active');
+                }
+                pageBtn.textContent = i;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    renderFeedbackList();
+                });
+                paginationEl.appendChild(pageBtn);
+            }
+            
+            // 下一页按钮
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.textContent = '下一页';
+            nextBtn.disabled = currentPage === pageCount;
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < pageCount) {
+                    currentPage++;
+                    renderFeedbackList();
+                }
+            });
+            paginationEl.appendChild(nextBtn);
+        }
+        
+        // 过滤反馈
+        function filterFeedbacks() {
+            const searchTerm = feedbackSearch.value.toLowerCase();
+            let filtered = feedbacks;
+            
+            // 应用搜索过滤
+            if (searchTerm) {
+                filtered = filtered.filter(feedback => 
+                    feedback.content.toLowerCase().includes(searchTerm) || 
+                    feedback.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // 应用状态过滤
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(feedback => feedback.status === currentFilter);
+            }
+            
+            return filtered;
+        }
+        
+        // 处理反馈操作
+        function handleFeedbackAction(e) {
+            const feedbackId = parseInt(e.target.dataset.id);
+            const action = e.target.dataset.action;
+            
+            const feedbackIndex = feedbacks.findIndex(f => f.id === feedbackId);
+            if (feedbackIndex === -1) return;
+            
+            if (action === 'review') {
+                feedbacks[feedbackIndex].status = 'reviewed';
+            } else if (action === 'close') {
+                feedbacks[feedbackIndex].status = 'closed';
+            }
+            
+            // 更新云端数据
+            saveAllFeedbacksToCloud();
+            
+            // 重新渲染列表
+            renderFeedbackList();
+        }
+        
+        // 保存反馈到云端（解决跨设备问题）
+        function saveFeedbackToCloud(feedback, callback) {
+            // 添加到本地列表
+            feedbacks.push(feedback);
+            
+            // 模拟API调用保存到云端
+            fetch(JSONBIN_API_URL, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': JSONBIN_API_KEY,
+                    'X-Bin-Versioning': false
+                },
+                body: JSON.stringify(feedbacks)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Feedback saved to cloud:', data);
+                if (callback) callback(true);
+            })
+            .catch(error => {
+                console.error('Error saving feedback:', error);
+                if (callback) callback(false);
+            });
+        }
+        
+        // 保存所有反馈到云端
+        function saveAllFeedbacksToCloud() {
+            fetch(JSONBIN_API_URL, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': JSONBIN_API_KEY,
+                    'X-Bin-Versioning': false
+                },
+                body: JSON.stringify(feedbacks)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('All feedbacks saved to cloud');
+            })
+            .catch(error => {
+                console.error('Error saving all feedbacks:', error);
+            });
+        }
+        
+        // 从云端加载反馈
+        function loadFeedbacksFromCloud(callback) {
+            fetch(JSONBIN_API_URL, {
+                method: 'GET',
+                headers: {
+                    'X-Master-Key': JSONBIN_API_KEY
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.record && Array.isArray(data.record)) {
+                    feedbacks = data.record;
+                    console.log('Feedbacks loaded from cloud:', feedbacks.length);
+                    if (callback) callback();
+                } else {
+                    feedbacks = [];
+                    if (callback) callback();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading feedbacks:', error);
+                feedbacks = [];
+                if (callback) callback();
+            });
+        }
+        
+        // 初始化应用
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
